@@ -6,7 +6,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="">HOME</a>
+                    <a class="nav-link" href="<?= base_url() ?>">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">PASIEN</a>
@@ -18,7 +18,7 @@
                     <a class="nav-link" href="">TINDAKAN</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">RAWAT</a>
+                    <a class="nav-link" href="<?= base_url('rawat') ?>">RAWAT</a>
                 </li>
             </ul>
         </div>

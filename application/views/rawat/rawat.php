@@ -12,19 +12,24 @@
                     </div>
                 <?php } ?>
 
-                <h5 class="card-title">Halaman Obat</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Display + Search Obat</h6>
+                <h5 class="card-title">Halaman Rawat</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Display + Search Rawat</h6>
 
-                <hr><a href="<?php echo base_url('obat/add') ?>" class="btn btn-primary">Tambah Obat</a>
+                <hr><a href="<?php echo base_url('rawat/add') ?>" class="btn btn-primary">Tambah Data Rawat</a>
                 <hr>
 
-                <table class="display" id="tabelobat">
+                <table class="display" id="tabelrawat">
 
                     <thead>
                         <tr>
-                            <th>ID Obat</th>
-                            <th>Nama Obat</th>
-                            <th>Harga Obat</th>
+                            <th>ID Rawat</th>
+                            <th>Tanggal Rawat</th>
+                            <th>Total Tindakan</th>
+                            <th>Total Obat</th>
+                            <th>Total Harga</th>
+                            <th>Uang Muka</th>
+                            <th>Kekurangan Tagihan</th>
+                            <th>ID Pasien</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,12 +37,17 @@
                     <tbody>
                         <?php foreach ($list as $item) { ?>
                             <tr>
-                                <td><?php echo $item['idobat'] ?></td>
-                                <td><?php echo $item['nama'] ?></td>
-                                <td><?php echo $item['harga'] ?></td>
+                                <td><?php echo $item['idrawat'] ?></td>
+                                <td><?php echo $item['tglrawat'] ?></td>
+                                <td><?php echo $item['totaltindakan'] ?></td>
+                                <td><?php echo $item['totalobat'] ?></td>
+                                <td><?php echo $item['totalharga'] ?></td>
+                                <td><?php echo $item['uangmuka'] ?></td>
+                                <td><?php echo $item['kurang'] ?></td>
+                                <td><?php echo $item['idpasien'] ?></td>
                                 <td>
-                                    <a href="obat/edit/<?php echo $item['idobat']; ?>" class="btn btn-warning">Edit</a>
-                                    <a href="obat/delete/<?php echo $item['idobat']; ?>" class="btn btn-danger">Delete</a>
+                                    <a href="rawat/edit/<?php echo $item['idrawat']; ?>" class="btn btn-warning">Edit</a>
+                                    <a href="rawat/delete/<?php echo $item['idrawat']; ?>" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -59,7 +69,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#tabelobat').DataTable({
+        $('#tabelrawat').DataTable({
             responsive: true
         });
     });
