@@ -20,8 +20,20 @@ class RawatTindakan extends CI_Controller
      * @see https://codeigniter.com/userguide3/general/urls.html
      */
 
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('RawatTindakanmodel');
+        $this->load->helper(array('form', 'url'));
+    }
+
     public function index()
     {
         $this->load->view('rawatTindakan/rawatTindakan_insert');
+    }
+
+    public function insert()
+    {
+        $this->RawatTindakanmodel->insert_rawat_tindakan($this->input->post());
     }
 }

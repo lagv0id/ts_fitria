@@ -1,4 +1,5 @@
 <?php $this->load->view('layout/header'); ?>
+<?php $this->load->view('layout/navbar'); ?>
 
 <div class="container mt-4">
     <div class="row">
@@ -8,18 +9,17 @@
                 <h5 class="card-title">Rawat Tindakan</h5>
                 <h6 class="card-subtitle mb-2 text-muted">lipsum</h6>
 
-                <form action="">
+                <form method="POST" action="<?php echo base_url('rawattindakan/insert') ?>">
 
-                    <label for="">ID Rawat Tindakan : </label><input type="text" class="form-control" name="idrawattindakan">
-                    <label for="">ID Rawat : </label><input type="text" class="form-control" name="idrawat">
-                    <label for="">ID Tindakan : </label><input type="text" class="form-control" name="idtindakan"><br>
-
-                    <select id="dokter" class="form-select">
+                    <label for="idrawattindakan">ID Rawat Tindakan : </label><input type="text" class="form-control" name="idrawattindakan">
+                    <label for="idrawat">ID Rawat : </label><input type="text" class="form-control" name="idrawat">
+                    <label for="idtindakan">ID Tindakan : </label><input type="text" class="form-control" name="idtindakan"><br>
+                    <label for="namadokter">Nama Dokter : </label>
+                    <select name="namadokter" id="dokter" class="form-select">
                         <option value=""></option>
                     </select>
-
-                    <label for=""></label><input type="text" name="biaya" class="form-control"><br>
-
+                    <label for="biaya">Biaya : </label><input type="text" name="biaya" class="form-control"><br>
+                    <button type="submit" class="btn btn-primary">Tambah data</button>
                 </form>
             </div>
         </div>
@@ -31,7 +31,7 @@
 
                 <h5 class="card-title">Rawat Tindakan</h5>
                 <h6 class="card-subtitle mb-2 text-muted">lipsum</h6>
-                <table>
+                <table class="table">
                     <thead>
                         <th>ID Dokter</th>
                         <th>Nama Dokter</th>

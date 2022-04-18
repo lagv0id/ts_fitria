@@ -18,32 +18,34 @@
                 <hr><a href="<?php echo base_url('obat/add') ?>" class="btn btn-primary">Tambah Obat</a>
                 <hr>
 
-                <table class="display" id="tabelobat">
+                <div class="table-responsive">
+                    <table class="display" id="tabelobat">
 
-                    <thead>
-                        <tr>
-                            <th>ID Obat</th>
-                            <th>Nama Obat</th>
-                            <th>Harga Obat</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php foreach ($list as $item) { ?>
+                        <thead>
                             <tr>
-                                <td><?php echo $item['idobat'] ?></td>
-                                <td><?php echo $item['nama'] ?></td>
-                                <td><?php echo $item['harga'] ?></td>
-                                <td>
-                                    <a href="obat/edit/<?php echo $item['idobat']; ?>" class="btn btn-warning">Edit</a>
-                                    <a href="obat/delete/<?php echo $item['idobat']; ?>" class="btn btn-danger">Delete</a>
-                                </td>
+                                <th>ID Obat</th>
+                                <th>Nama Obat</th>
+                                <th>Harga Obat</th>
+                                <th>Action</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
+                        </thead>
 
-                </table>
+                        <tbody>
+                            <?php foreach ($list as $item) { ?>
+                                <tr>
+                                    <td><?php echo $item['idobat'] ?></td>
+                                    <td><?php echo $item['nama'] ?></td>
+                                    <td><?php echo $item['harga'] ?></td>
+                                    <td>
+                                        <a href="obat/edit/<?php echo $item['idobat']; ?>" class="btn btn-warning">Edit</a>
+                                        <a href="obat/delete/<?php echo $item['idobat']; ?>" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
         </div>
     </div>
