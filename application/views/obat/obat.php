@@ -5,28 +5,45 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
+
+                <?php if ($this->session->flashdata('pesan') != '') { ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $this->session->flashdata('pesan'); ?>
+                    </div>
+                <?php } ?>
+
                 <h5 class="card-title">Halaman Obat</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Obat obat obat obat obat</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Display + Search Obat</h6>
+
+                <hr><a href="<?php echo base_url('obat/add') ?>" class="btn btn-primary">Tambah Obat</a>
+                <hr>
 
                 <table class="display" id="tabelbuku">
+
                     <thead>
                         <tr>
                             <th>ID Obat</th>
                             <th>Nama Obat</th>
                             <th>Harga Obat</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <?php foreach ($list as $item) { ?>
                             <tr>
                                 <td><?php echo $item['idobat'] ?></td>
                                 <td><?php echo $item['nama'] ?></td>
                                 <td><?php echo $item['harga'] ?></td>
+                                <td>
+                                    <a href="obat/edit/<?php echo $item['idobat']; ?>" class="btn btn-warning">Edit</a>
+                                    <a href="obat/delete/<?php echo $item['idobat']; ?>" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
-                </table>
 
+                </table>
             </div>
         </div>
     </div>

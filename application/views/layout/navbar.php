@@ -12,7 +12,7 @@
                     <a class="nav-link" href="">PASIEN</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">OBAT</a>
+                    <a class="nav-link" href="<?= base_url('obat') ?>">OBAT</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">TINDAKAN</a>
