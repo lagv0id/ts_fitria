@@ -32,4 +32,38 @@ class Obat extends CI_Controller
         $data['list'] = $this->Obatmodel->get_obat();
         $this->load->view('obat/obat', $data);
     }
+
+    public function add()
+    {
+        $this->load->view('obat/obat_insert');
+    }
+
+    public function insert()
+    {
+        $this->Obatmodel->insert_obat($this->input->post());
+        $this->session->set_flashdata('pesan', 'Data obat berhasil ditambah');
+        redirect(base_url('obat'));
+    }
+
+    public function edit($id)
+    {
+        $data['detail'] = $this->Obatmodel->get_obat_detail($id);
+        $this->load->view('obat/obat_edit', $data);
+    }
+
+    public function update($id)
+    {
+        $this->Obatmodel->update_obat(($this->input->post()), $id);
+        $this->session->set_flashdata('pesan', 'Data obat berhasil diedit.');
+        redirect(base_url('obat'));
+    }
+
+    public function delete($id)
+    {
+        $this->db->where('idobat', $id);
+        if ($this->db->delete('obat')) {
+            $this->session->set_flashdata('pesan', 'Data obat berhasil dihapus.');
+            redirect(base_url('obat'));
+        }
+    }
 }
