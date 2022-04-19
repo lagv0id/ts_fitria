@@ -5,37 +5,48 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Halaman Pasien</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Data Pasien Klinik Fitria</h6>
+
+                <?php if ($this->session->flashdata('pesan') != '') { ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $this->session->flashdata('pesan'); ?>
+                    </div>
+                <?php } ?>
+
+                <h5 class="card-title">Halaman Rawat-Tindakan</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Data Tindakan per ID Rawat</h6>
+
+                <hr><a href="<?php echo base_url('rawatTindakan/add') ?>" class="btn btn-primary">Tambah Data Tindakan-Rawat</a>
                 <hr>
-                <a href="Pasien/add" class="btn btn-primary">Tambah Pasien</a>
-                <hr>
-                <table class="table" id="tabelpasien">
+
+                <table class="display" id="tabelrawat">
+
                     <thead>
                         <tr>
-                            <th>ID Pasien</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Tanggal Lahir</th>
-                            <th>Telepon</th>
+                            <th>ID</th>
+                            <th>ID Rawat</th>
+                            <th>ID Tindakan</th>
+                            <th>Nama Dokter</th>
+                            <th>Biaya</th>
                             <th>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <?php foreach ($list as $item) { ?>
                             <tr>
-                                <td><?php echo $item['idpasien'] ?></td>
-                                <td><?php echo $item['nama'] ?></td>
-                                <td><?php echo $item['alamat'] ?></td>
-                                <td><?php echo $item['tgllahir'] ?></td>
-                                <td><?php echo $item['notelp'] ?></td>
+                                <td><?php echo $item['idrawattindakan'] ?></td>
+                                <td><?php echo $item['idrawat'] ?></td>
+                                <td><?php echo $item['idtindakan'] ?></td>
+                                <td><?php echo $item['namadokter'] ?></td>
+                                <td><?php echo $item['biaya'] ?></td>
                                 <td>
-                                    <a href="Pasien/edit/<?php echo $item['idpasien']; ?>" type="button" class="btn btn-warning">Edit</a>
-                                    <a href="Pasien/delete/<?php echo $item['idpasien']; ?>" onclick="return confirm('Apakah Anda yakin akan menghapus data?')" type="button" class="btn btn-danger">Delete</a>
+                                    <a href="rawattindakan/edit/<?php echo $item['idrawattindakan']; ?>" class="btn btn-warning">Edit</a>
+                                    <a href="rawattindakan/delete/<?php echo $item['idrawattindakan']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>
                     </tbody>
+
                 </table>
             </div>
         </div>
@@ -52,7 +63,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#tabelpasien').DataTable({
+        $('#tabelrawat').DataTable({
             responsive: true
         });
     });

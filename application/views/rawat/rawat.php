@@ -47,7 +47,7 @@
                                 <td><?php echo $item['idpasien'] ?></td>
                                 <td>
                                     <a href="rawat/edit/<?php echo $item['idrawat']; ?>" class="btn btn-warning">Edit</a>
-                                    <a href="rawat/delete/<?php echo $item['idrawat']; ?>" class="btn btn-danger">Delete</a>
+                                    <a href="rawat/delete/<?php echo $item['idrawat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>

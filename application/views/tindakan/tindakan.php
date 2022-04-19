@@ -8,10 +8,11 @@
             <div class="card-body">
                 <h5 class="card-title">Halaman Tindakan</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Data Tindakan Pasien Klinik Fitria</h6>
-                
+                <hr>
+                <a href="Tindakan/add_Tindakan" class="btn btn-primary">Tambah Tindakan</a>
+                <hr>
+                <table class="display" id="tabelbuku">
 
-                <table class="display" id="tabelbuku"></br>
-                    <a href="Tindakan/add_Tindakan" class="btn btn-success">Tambah Tindakan</a></br>
                     <thead>
                         <tr>
                             <th>ID Tindakan</th>
@@ -20,6 +21,7 @@
                             <th class="text-center" style="width:20%;">Aksi</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <?php foreach ($list as $item) { ?>
                             <tr>
@@ -33,6 +35,7 @@
                             </tr>
                         <?php } ?>
                     </tbody>
+
                 </table>
 
             </div>

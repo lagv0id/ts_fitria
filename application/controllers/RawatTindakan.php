@@ -24,16 +24,52 @@ class RawatTindakan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('RawatTindakanmodel');
+        $this->load->model('Rawatmodel');
+        $this->load->model('Tindakanmodel');
+        $this->load->model('Pasienmodel');
         $this->load->helper(array('form', 'url'));
     }
 
     public function index()
     {
-        $this->load->view('rawatTindakan/rawatTindakan_insert');
+        $data['list'] = $this->RawatTindakanmodel->get_rawat_tindakan();
+        $this->load->view('rawatTindakan/rawatTindakan', $data);
+    }
+
+    public function add()
+    {
+        $data['tindakan'] = $this->Tindakanmodel->get_tindakan();
+        $data['rawat'] = $this->Rawatmodel->get_rawat();
+        $this->load->view('rawatTindakan/rawatTindakan_insert', $data);
     }
 
     public function insert()
     {
         $this->RawatTindakanmodel->insert_rawat_tindakan($this->input->post());
+        redirect(base_url('rawattindakan'));
+    }
+
+    public function edit($id)
+    {
+        $data['tindakan'] = $this->Tindakanmodel->get_tindakan();
+        $data['rawat'] = $this->Rawatmodel->get_rawat();
+        $data['detail'] = $this->RawatTindakanmodel->get_rawat_tindakan_detail($id);
+        $this->load->view('rawatTindakan/rawattindakan_edit', $data);
+    }
+
+    public function update($id)
+    {
+        $this->RawatTindakanmodel->update_rawat_tindakan(($this->input->post()), $id);
+        $this->session->set_flashdata('pesan', 'Data rawat-tindakan berhasil diedit.');
+        redirect(base_url('rawattindakan'));
+    }
+
+    public function delete($a)
+    {
+        $this->db->where('idrawattindakan', $a);
+        if ($this->db->delete('rawattindakan')) {
+            $this->session->set_flashdata('pesan', 'Data rawat-tindakan berhasil dihapus.');
+            redirect(base_url('rawattindakan'));
+        }
     }
 }

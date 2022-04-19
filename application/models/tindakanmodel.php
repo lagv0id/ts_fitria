@@ -42,9 +42,3 @@ class tindakanmodel extends CI_Model {
         return $this->db->delete('tindakan');
     }
 }
-
-?>
-
-</html>
-
-}

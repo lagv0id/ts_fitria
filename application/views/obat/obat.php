@@ -13,39 +13,37 @@
                 <?php } ?>
 
                 <h5 class="card-title">Halaman Obat</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Display + Search Obat</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Data Obat Klinik Fitria</h6>
 
                 <hr><a href="<?php echo base_url('obat/add') ?>" class="btn btn-primary">Tambah Obat</a>
                 <hr>
 
-                <div class="table-responsive">
-                    <table class="display" id="tabelobat">
+                <table class="display" id="tabelobat">
 
-                        <thead>
+                    <thead>
+                        <tr>
+                            <th>ID Obat</th>
+                            <th>Nama Obat</th>
+                            <th>Harga Obat</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($list as $item) { ?>
                             <tr>
-                                <th>ID Obat</th>
-                                <th>Nama Obat</th>
-                                <th>Harga Obat</th>
-                                <th>Action</th>
+                                <td><?php echo $item['idobat'] ?></td>
+                                <td><?php echo $item['nama'] ?></td>
+                                <td><?php echo $item['harga'] ?></td>
+                                <td>
+                                    <a href="obat/edit/<?php echo $item['idobat']; ?>" class="btn btn-warning">Edit</a>
+                                    <a href="obat/delete/<?php echo $item['idobat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
-                        </thead>
+                        <?php } ?>
+                    </tbody>
 
-                        <tbody>
-                            <?php foreach ($list as $item) { ?>
-                                <tr>
-                                    <td><?php echo $item['idobat'] ?></td>
-                                    <td><?php echo $item['nama'] ?></td>
-                                    <td><?php echo $item['harga'] ?></td>
-                                    <td>
-                                        <a href="obat/edit/<?php echo $item['idobat']; ?>" class="btn btn-warning">Edit</a>
-                                        <a href="obat/delete/<?php echo $item['idobat']; ?>" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-
-                </div>
+                </table>
             </div>
         </div>
     </div>

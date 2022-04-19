@@ -9,16 +9,19 @@
                     <a class="nav-link" href="<?= base_url() ?>">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">PASIEN</a>
+                    <a class="nav-link" href="<?= base_url('pasien') ?>">PASIEN</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('obat') ?>">OBAT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">TINDAKAN</a>
+                    <a class="nav-link" href="<?= base_url('tindakan') ?>">TINDAKAN</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('rawat') ?>">RAWAT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('rawattindakan') ?>">RAWAT-TINDAKAN</a>
                 </li>
             </ul>
         </div>

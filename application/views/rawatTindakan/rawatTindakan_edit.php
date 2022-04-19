@@ -9,9 +9,9 @@
                 <h5 class="card-title">Rawat Tindakan</h5>
                 <h6 class="card-subtitle mb-2 text-muted">lipsum</h6>
 
-                <form method="POST" action="<?php echo base_url('rawattindakan/insert') ?>">
+                <form method="POST" action="<?php echo base_url('rawattindakan/update/') . $detail['idrawattindakan'] ?>">
 
-                    <label for="idrawattindakan">ID Rawat Tindakan : </label><input type="text" class="form-control" name="idrawattindakan">
+                    <label for="idrawattindakan">ID Rawat Tindakan : </label><input type="text" class="form-control" name="idrawattindakan" value="<?php echo $detail['idrawattindakan'] ?>">
 
                     <label for="idrawat">ID Rawat : </label><select class="form-select" name="idrawat">
                         <?php foreach ($rawat as $item) { ?>
@@ -30,7 +30,7 @@
                         <option value=""></option>
                     </select>
 
-                    <br><button type="submit" class="btn btn-primary">Tambah data</button>
+                    <br><button type="submit" class="btn btn-primary">Update data</button>
                 </form>
             </div>
         </div>

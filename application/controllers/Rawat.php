@@ -38,7 +38,6 @@ class Rawat extends CI_Controller
     public function add()
     {
         $data['list'] = $this->Pasienmodel->get_pasien();
-        print_r($data['list']);
         $this->load->view('rawat/rawat_insert', $data);
     }
 
