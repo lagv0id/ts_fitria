@@ -45,7 +45,7 @@ class Rawatmodel extends CI_Model
             'idrawat' => $a['idrawat'],
             'tglrawat' => $a['tglrawat'],
             'totaltindakan' => $totalrawat['biaya'],
-            'totalobat' => $totalrawat['biaya'],
+            'totalobat' => $totalobat['harga'],
             'totalharga' => $totalrawat['biaya'] + $totalobat['harga'],
             'uangmuka' => $a['uangmuka'],
             'kurang' => $kekurangan,
