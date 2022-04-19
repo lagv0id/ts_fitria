@@ -11,8 +11,6 @@
                 <form method="POST" action="<?php echo base_url('rawat/insert') ?>">
                     <label for="idrawat">ID Rawat : </label><input type="text" name="idrawat" class="form-control" placeholder="Format: R0XX" required>
                     <label for="tglrawat">Tanggal Rawat : </label><input type="date" name="tglrawat" class="form-control" required>
-                    <label for="totaltindakan">Total biaya tindakan : </label><input type="number" name="totaltindakan" class="form-control">
-                    <label for="totalobat">Total biaya obat : </label><input type="number" name="totalobat" class="form-control">
                     <label for="uangmuka">Uang muka : </label><input type="number" name="uangmuka" class="form-control" required>
                     <label for="idpasien">ID Pasien : </label><select class="form-select" name="idpasien">
                         <?php foreach ($list as $item) { ?>

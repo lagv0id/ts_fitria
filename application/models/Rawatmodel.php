@@ -15,20 +15,10 @@ class Rawatmodel extends CI_Model
 
     public function insert_rawat($a)
     {
-        $kekurangan = ($a['totaltindakan'] + $a['totalobat']) - $a['uangmuka'];
-
-        if ($kekurangan < 0) {
-            $kekurangan = '0';
-        }
-
         $data = [
             'idrawat' => $a['idrawat'],
             'tglrawat' => $a['tglrawat'],
-            'totaltindakan' => $a['totaltindakan'],
-            'totalobat' => $a['totalobat'],
-            'totalharga' => $a['totaltindakan'] + $a['totalobat'],
             'uangmuka' => $a['uangmuka'],
-            'kurang' => $kekurangan,
             'idpasien' => $a['idpasien'],
         ];
 
@@ -37,7 +27,15 @@ class Rawatmodel extends CI_Model
 
     public function update_rawat($a, $id)
     {
-        $kekurangan = ($a['totaltindakan'] + $a['totalobat']) - $a['uangmuka'];
+        $this->db->where('idrawat', $a['idrawat']);
+        $this->db->select_sum('biaya');
+        $totalrawat = $this->db->get('rawattindakan')->row_array();
+
+        $this->db->where('idrawat', $a['idrawat']);
+        $this->db->select_sum('harga');
+        $totalobat = $this->db->get('rawatobat')->row_array();
+
+        $kekurangan = ($totalrawat['biaya'] + $totalobat['harga']) - $a['uangmuka'];
 
         if ($kekurangan < 0) {
             $kekurangan = '0';
@@ -46,13 +44,14 @@ class Rawatmodel extends CI_Model
         $data = [
             'idrawat' => $a['idrawat'],
             'tglrawat' => $a['tglrawat'],
-            'totaltindakan' => $a['totaltindakan'],
-            'totalobat' => $a['totalobat'],
-            'totalharga' => $a['totaltindakan'] + $a['totalobat'],
+            'totaltindakan' => $totalrawat['biaya'],
+            'totalobat' => $totalrawat['biaya'],
+            'totalharga' => $totalrawat['biaya'] + $totalobat['harga'],
             'uangmuka' => $a['uangmuka'],
             'kurang' => $kekurangan,
             'idpasien' => $a['idpasien'],
         ];
+
         $this->db->where('idrawat', $id);
         return $this->db->update('rawat', $data);
     }

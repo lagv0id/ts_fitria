@@ -11,8 +11,6 @@
                 <form method="POST" action="<?php echo base_url('rawat/update/' . $detail['idrawat']) ?>">
                     <label for="idrawat">ID Rawat : </label><input type="text" name="idrawat" class="form-control" value="<?php echo $detail['idrawat'] ?>" placeholder="Format: R0XX" required>
                     <label for="tglrawat">Tanggal Rawat : </label><input type="date" name="tglrawat" class="form-control" value="<?php echo $detail['tglrawat'] ?>" required>
-                    <label for="totaltindakan">Total biaya tindakan : </label><input type="number" name="totaltindakan" value="<?php echo $detail['totaltindakan'] ?>" class="form-control">
-                    <label for="totalobat">Total biaya obat : </label><input type="number" name="totalobat" value="<?php echo $detail['totalobat'] ?>" class="form-control">
                     <label for="uangmuka">Uang muka : </label><input type="number" name="uangmuka" value="<?php echo $detail['uangmuka'] ?>" class="form-control" required>
                     <label for="idpasien">ID Pasien : </label><select class="form-select" name="idpasien">
                         <?php foreach ($list as $item) { ?>
