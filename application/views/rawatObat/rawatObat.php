@@ -12,10 +12,10 @@
                     </div>
                 <?php } ?>
 
-                <h5 class="card-title">Halaman Rawat-Tindakan</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Data Tindakan per ID Rawat</h6>
+                <h5 class="card-title">Halaman Rawat-Obat</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Data Obat per ID Rawat</h6>
 
-                <hr><a href="<?php echo base_url('rawatTindakan/add') ?>" class="btn btn-primary">Tambah Data Tindakan-Rawat</a>
+                <hr><a href="<?php echo base_url('rawatObat/add') ?>" class="btn btn-primary">Tambah Data Tindakan-Obat</a>
                 <hr>
 
                 <table class="display" id="tabelrawat">
@@ -24,9 +24,9 @@
                         <tr>
                             <th>ID</th>
                             <th>ID Rawat</th>
-                            <th>ID Tindakan</th>
-                            <th>Nama Dokter</th>
-                            <th>Biaya</th>
+                            <th>ID Obat</th>
+                            <th>Jumlah</th>
+                            <th>Harga</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,15 +34,15 @@
                     <tbody>
                         <?php foreach ($list as $item) { ?>
                             <tr>
-                                <td><?php echo $item['idrawattindakan'] ?></td>
+                                <td><?php echo $item['idrawatobat'] ?></td>
                                 <td><?php echo $item['idrawat'] ?></td>
-                                <td><?php echo $item['idtindakan'] ?></td>
-                                <td><?php echo $item['namadokter'] ?></td>
-                                <td><?php echo $item['biaya'] ?></td>
+                                <td><?php echo $item['idobat'] ?></td>
+                                <td><?php echo $item['jumlah'] ?></td>
+                                <td><?php echo $item['harga'] ?></td>
 
                                 <td>
-                                    <a href="rawattindakan/edit/<?php echo $item['idrawattindakan']; ?>" class="btn btn-warning">Edit</a>
-                                    <a href="rawattindakan/delete/<?php echo $item['idrawattindakan']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
+                                    <a href="rawatobat/edit/<?php echo $item['idrawatobat']; ?>" class="btn btn-warning">Edit</a>
+                                    <a href="rawatobat/delete/<?php echo $item['idrawatobat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
                                 </td>
 
                             </tr>
