@@ -66,4 +66,10 @@ class Obat extends CI_Controller
             redirect(base_url('obat'));
         }
     }
+
+    public function test()
+    {
+        $this->load->model('testmodel');
+        $this->testmodel->get_totalbiaya();
+    }
 }

@@ -6,9 +6,11 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Halaman Pasien</h5>
-                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <h6 class="card-subtitle mb-2 text-muted">Data Pasien Klinik Fitria</h6>
+                <hr>
                 <a href="Pasien/add" class="btn btn-primary">Tambah Pasien</a>
                 <a href="Pasien/print" class="btn btn-success">Print</a>
+                <hr>
                 <table class="table" id="tabelpasien">
                     <thead>
                         <tr>
@@ -29,8 +31,8 @@
                                 <td><?php echo $item['tgllahir'] ?></td>
                                 <td><?php echo $item['notelp'] ?></td>
                                 <td>
-                                <a href="Pasien/edit/<?php echo $item['idpasien'];?>" type="button" class="btn btn-warning">Edit</a>
-                                <a href="Pasien/delete/<?php echo $item['idpasien'];?>" onclick="return confirm('Apakah Anda yakin akan menghapus data?')" type="button" class="btn btn-danger">Delete</a>
+                                    <a href="Pasien/edit/<?php echo $item['idpasien']; ?>" type="button" class="btn btn-warning">Edit</a>
+                                    <a href="Pasien/delete/<?php echo $item['idpasien']; ?>" onclick="return confirm('Apakah Anda yakin akan menghapus data?')" type="button" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>
