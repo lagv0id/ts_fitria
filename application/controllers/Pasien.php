@@ -95,4 +95,10 @@ class Pasien extends CI_Controller
             $this->session->set_flashdata('pesan', 'Data berhasil ditambah');
             redirect(base_url('Pasien'));
     }
+
+    public function print()
+    {
+        $data['list'] = $this->Pasienmodel->get_pasien();
+        $this->load->view('pasien/printpasien', $data);
+    }
 }

@@ -8,6 +8,7 @@
                 <h5 class="card-title">Halaman Pasien</h5>
                 <h6 class="card-subtitle mb-2 text-muted"></h6>
                 <a href="Pasien/add" class="btn btn-primary">Tambah Pasien</a>
+                <a href="Pasien/print" class="btn btn-success">Print</a>
                 <table class="table" id="tabelpasien">
                     <thead>
                         <tr>
