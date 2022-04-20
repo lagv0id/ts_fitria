@@ -15,7 +15,8 @@
                 <h5 class="card-title">Halaman Rawat</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Display + Search Rawat</h6>
 
-                <hr><a href="<?php echo base_url('rawat/add') ?>" class="btn btn-primary">Tambah Data Rawat</a>
+                <hr>
+                <a href="<?php echo base_url('rawat/add') ?>" class="btn btn-primary">Tambah Data Rawat</a>
                 <hr>
 
                 <table class="display" id="tabelrawat">
@@ -46,7 +47,8 @@
                                 <td><?php echo $item['kurang'] ?></td>
                                 <td><?php echo $item['idpasien'] ?></td>
                                 <td>
-                                    <a href="<?php echo base_url() ?>rawat/edit/<?php echo $item['idrawat']; ?>" class="btn btn-warning">Edit</a>
+                                    <a href="<?php echo base_url() ?>rawat/print/<?php echo $item['idrawat']; ?>" class="btn btn-success">Cetak</a><br>
+                                    <a href="<?php echo base_url() ?>rawat/edit/<?php echo $item['idrawat']; ?>" class="btn btn-warning">Edit</a><br>
                                     <a href="rawat/delete/<?php echo $item['idrawat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>

@@ -26,6 +26,8 @@ class Rawat extends CI_Controller
         parent::__construct();
         $this->load->model('Rawatmodel');
         $this->load->model('Pasienmodel');
+        $this->load->model('RawatObatmodel');
+        $this->load->model('RawatTindakanmodel');
         $this->load->helper(array('form', 'url'));
     }
 
@@ -69,5 +71,11 @@ class Rawat extends CI_Controller
             $this->session->set_flashdata('pesan', 'Data rawat berhasil dihapus.');
             redirect(base_url('rawat'));
         }
+    }
+
+    public function print($id)
+    {
+        $data['detail'] = $this->Rawatmodel->get_rawat_detail($id);
+        $this->load->view('rawat/rawat_print',$data);
     }
 }

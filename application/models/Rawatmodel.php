@@ -9,8 +9,11 @@ class Rawatmodel extends CI_Model
 
     public function get_rawat_detail($id)
     {
-        $this->db->where('idrawat', $id);
-        return $this->db->get('rawat')->row_array();
+        $this->db->select('*');
+        $this->db->join('pasien','pasien.idpasien = rawat.idpasien');  
+        // $this->db->join('rawattindakan','rawat.idrawat = rawattindakan.idrawat');    
+        $query = $this->db->get_where('rawat',array('idrawat'=>$id));
+        return $query->row_array();
     }
 
     public function insert_rawat($a)
