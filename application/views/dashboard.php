@@ -3,9 +3,12 @@
 
 <div class="container mt-4">
     <div class="row">
-        <div class="card">
+        <div class="card text-center">
             <div class="card-body">
-                <div class="card-title">Selamat datang di Dashboard Klinik Fitria</div>
+                <div class="card-title mb-3"> <b>
+                        <h3> Selamat datang di Dashboard Klinik Fitria </h3>
+                    </b> </div>
+                <img class="img-fluid " src="assets/img/dash.jpg" alt="" width="1200px">
             </div>
         </div>
     </div>

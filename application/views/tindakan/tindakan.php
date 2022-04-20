@@ -11,7 +11,7 @@
                 <hr>
                 <a href="Tindakan/add_Tindakan" class="btn btn-primary">Tambah Tindakan</a>
                 <hr>
-                <table class="display" id="tabelbuku">
+                <table class="display text-center" id="tabelbuku">
 
                     <thead>
                         <tr>

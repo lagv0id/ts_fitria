@@ -25,6 +25,7 @@ class Obat extends CI_Controller
         parent::__construct();
         $this->load->model('Obatmodel');
         $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -40,9 +41,16 @@ class Obat extends CI_Controller
 
     public function insert()
     {
-        $this->Obatmodel->insert_obat($this->input->post());
-        $this->session->set_flashdata('pesan', 'Data obat berhasil ditambah');
-        redirect(base_url('obat'));
+        $this->form_validation->set_rules('idobat', 'ID Obat', 'is_unique[obat.idobat]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('gagal', 'Data gagal ditambah, tolong cek isian form lagi.');
+            redirect(base_url('obat'));
+        } else {
+            $this->Obatmodel->insert_obat($this->input->post());
+            $this->session->set_flashdata('pesan', 'Data obat berhasil ditambah');
+            redirect(base_url('obat'));
+        }
     }
 
     public function edit($id)

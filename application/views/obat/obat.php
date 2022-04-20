@@ -10,6 +10,10 @@
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <?php echo $this->session->flashdata('pesan'); ?>
                     </div>
+                <?php } elseif ($this->session->flashdata('gagal') != '') { ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?php echo $this->session->flashdata('gagal'); ?>
+                    </div>
                 <?php } ?>
 
                 <h5 class="card-title">Halaman Obat</h5>

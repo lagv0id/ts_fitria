@@ -10,6 +10,10 @@
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <?php echo $this->session->flashdata('pesan'); ?>
                     </div>
+                <?php } elseif ($this->session->flashdata('gagal') != '') { ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?php echo $this->session->flashdata('gagal'); ?>
+                    </div>
                 <?php } ?>
 
                 <h5 class="card-title">Halaman Rawat</h5>
@@ -19,17 +23,12 @@
                 <a href="<?php echo base_url('rawat/add') ?>" class="btn btn-primary">Tambah Data Rawat</a>
                 <hr>
 
-                <table class="display" id="tabelrawat">
+                <table class="display text-center" id="tabelrawat">
 
                     <thead>
                         <tr>
                             <th>ID Rawat</th>
                             <th>Tanggal Rawat</th>
-                            <th>Total Tindakan</th>
-                            <th>Total Obat</th>
-                            <th>Total Harga</th>
-                            <th>Uang Muka</th>
-                            <th>Kekurangan Tagihan</th>
                             <th>ID Pasien</th>
                             <th>Action</th>
                         </tr>
@@ -40,15 +39,10 @@
                             <tr>
                                 <td><?php echo $item['idrawat'] ?></td>
                                 <td><?php echo $item['tglrawat'] ?></td>
-                                <td><?php echo $item['totaltindakan'] ?></td>
-                                <td><?php echo $item['totalobat'] ?></td>
-                                <td><?php echo $item['totalharga'] ?></td>
-                                <td><?php echo $item['uangmuka'] ?></td>
-                                <td><?php echo $item['kurang'] ?></td>
                                 <td><?php echo $item['idpasien'] ?></td>
                                 <td>
-                                    <a href="<?php echo base_url() ?>rawat/print/<?php echo $item['idrawat']; ?>" class="btn btn-success">Cetak</a><br>
-                                    <a href="<?php echo base_url() ?>rawat/edit/<?php echo $item['idrawat']; ?>" class="btn btn-warning">Edit</a><br>
+                                    <a href="<?php echo base_url() ?>rawat/print/<?php echo $item['idrawat']; ?>" class="btn btn-success">Cetak</a>
+                                    <a href="<?php echo base_url() ?>rawat/edit/<?php echo $item['idrawat']; ?>" class="btn btn-warning">Edit</a>
                                     <a href="rawat/delete/<?php echo $item['idrawat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>

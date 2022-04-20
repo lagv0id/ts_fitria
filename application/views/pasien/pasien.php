@@ -11,7 +11,7 @@
                 <a href="Pasien/add" class="btn btn-primary">Tambah Pasien</a>
                 <a href="Pasien/print" class="btn btn-success">Print</a>
                 <hr>
-                <table class="table" id="tabelpasien">
+                <table class="display text-center" id="tabelpasien">
                     <thead>
                         <tr>
                             <th>ID Pasien</th>

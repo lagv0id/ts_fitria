@@ -18,7 +18,7 @@
                 <hr><a href="<?php echo base_url('rawatTindakan/add') ?>" class="btn btn-primary">Tambah Data Tindakan-Rawat</a>
                 <hr>
 
-                <table class="display" id="tabelrawat">
+                <table class="display text-center" id="tabelrawat">
 
                     <thead>
                         <tr>

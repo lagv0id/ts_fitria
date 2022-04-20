@@ -28,6 +28,7 @@ class RawatTindakan extends CI_Controller
         $this->load->model('Tindakanmodel');
         $this->load->model('Pasienmodel');
         $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -45,8 +46,16 @@ class RawatTindakan extends CI_Controller
 
     public function insert()
     {
-        $this->RawatTindakanmodel->insert_rawat_tindakan($this->input->post());
-        redirect(base_url('rawattindakan'));
+        $this->form_validation->set_rules('idrawattindakan', 'ID Rawat-Tindakan', 'is_unique[rawattindakan.idrawattindakan]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('pesan', 'Data gagal ditambah, tolong cek isian form lagi.');
+            redirect(base_url('rawat'));
+        } else {
+            $this->RawatTindakanmodel->insert_rawat_tindakan($this->input->post());
+            $this->session->set_flashdata('pesan', 'Data rawat-tindakan berhasil ditambah');
+            redirect(base_url('rawattindakan'));
+        }
     }
 
     public function edit($id)
