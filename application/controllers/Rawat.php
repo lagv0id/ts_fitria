@@ -76,6 +76,8 @@ class Rawat extends CI_Controller
     public function print($id)
     {
         $data['detail'] = $this->Rawatmodel->get_rawat_detail($id);
+        $data['rt'] = $this->RawatTindakanmodel->get_rawat_detail($id);
+        $data['ro'] = $this->RawatObatmodel->get_rawat_detail($id);
         $this->load->view('rawat/rawat_print',$data);
     }
 }

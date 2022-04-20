@@ -13,6 +13,12 @@ class RawatTindakanmodel extends CI_Model
         return $this->db->get('rawattindakan')->row_array();
     }
 
+    public function get_rawat_detail($id)
+    {
+        $this->db->where('idrawat', $id);
+        return $this->db->get('rawattindakan')->result_array();
+    }
+
     public function insert_rawat_tindakan($a)
     {
         $this->db->where('idtindakan', $a['idtindakan']);
@@ -45,4 +51,5 @@ class RawatTindakanmodel extends CI_Model
         $this->db->where('idrawattindakan', $id);
         return $this->db->update('rawattindakan', $data);
     }
+
 }

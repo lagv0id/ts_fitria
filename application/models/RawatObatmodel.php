@@ -13,6 +13,12 @@ class RawatObatmodel extends CI_Model
         return $this->db->get('rawatobat')->row_array();
     }
 
+    public function get_rawat_detail($id)
+    {
+        $this->db->where('idrawat', $id);
+        return $this->db->get('rawatobat')->result_array();
+    }
+
     public function insert_rawat_obat($a)
     {
         $this->db->where('idobat', $a['idobat']);

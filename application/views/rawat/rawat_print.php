@@ -56,36 +56,43 @@
     <h4>DAFTAR TINDAKAN PASIEN</h4>
     <table id="table"> 
         <tr>
-            <th>TANGGAL</th>
             <th>TINDAKAN</th>
             <th>DOKTER</th>
             <th>BIAYA</th>
         </tr>
+        <?php foreach ($rt as $item) {?>
         <tr>
-            <td><?php echo $detail['tglrawat']?></td>
-            <td></td>
-            <td></td>
-            <td><?php echo $detail['totaltindakan']?></td>
+            <td><?php echo $item['idtindakan']?></td>
+            <td><?php echo $item['namadokter'] ?></td>
+            <td><?php echo $item['biaya']?></td>
         </tr>
+        <?php } ?>
     </table>
+    <br>
+    <p style="text-align:right;">TOTAL TINDAKAN : Rp. <?php echo $detail['totaltindakan']?></p>
     <h4>DAFTAR OBAT PASIEN</h4>
     <table id="table"> 
         <tr>
-            <th>TANGGAL</th>
-            <th>KODE</th>
-            <th>NAMA OBAT</th>
+            <th>KODE/NAMA OBAT</th>
             <th>JUMLAH</th>
             <th>HARGA</th>
         </tr>
+        <?php foreach ($ro as $item) {?>
         <tr>
-            <td><?php echo $detail['tglrawat']?></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><?php echo $detail['totalobat']?></td>
+            <?php if(isset($item['idobat'])): ?>
+            <td><?php echo $item['idobat']?></td>
+            <td><?php echo $item['jumlah']?></td>
+            <?php else: ?>
+                <td>null</td>    
+                <td>null</td>
+            <?php endif; ?>
+            <td><?php echo $item['harga']?></td>
         </tr>
+        <?php } ?>
     </table>
     <br>
+    <p style="text-align:right;">TOTAL OBAT : Rp. <?php echo $detail['totalobat']?></p>
+    
     <table width=35%>
         <tr>
             <td>TOTAL TINDAKAN</td>
