@@ -34,6 +34,11 @@ class Obat extends CI_Controller
         $this->load->view('obat/obat', $data);
     }
 
+    public function serverside()
+    {
+        $this->load->view('obat/obat_serverside');
+    }
+
     public function add()
     {
         $this->load->view('obat/obat_insert');
@@ -75,9 +80,36 @@ class Obat extends CI_Controller
         }
     }
 
-    public function test()
+    public function proses()
     {
-        $this->load->model('testmodel');
-        $this->testmodel->get_totalbiaya();
+        // DB table to use
+        $table = 'obat';
+
+        // Table's primary key
+        $primaryKey = 'idobat';
+
+        // Array of database columns which should be read and sent back to DataTables.
+        // The `db` parameter represents the column name in the database, while the `dt`
+        // parameter represents the DataTables column identifier. In this case simple
+        // indexes
+        $columns = array(
+            array('db' => 'idobat', 'dt' => 0),
+            array('db' => 'nama', 'dt' => 1),
+            array('db' => 'harga', 'dt' => 2)
+        );
+
+        // SQL server connection information
+        $sql_details = array(
+            'user' => 'kairos',
+            'pass' => 'tsdiklat',
+            'db'   => 'ts_fitria',
+            'host' => 'localhost'
+        );
+
+        $this->load->library('ssp');
+
+        echo json_encode(
+            SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
+        );
     }
 }

@@ -51,4 +51,27 @@ class RawatObatmodel extends CI_Model
         $this->db->where('idrawatobat', $id);
         return $this->db->update('rawatobat', $data);
     }
+
+    public function total_obat()
+    {
+
+        $data = $this->db->query("SELECT SUM(rawatobat.jumlah) as total, obat.nama as idobat FROM rawatobat, obat WHERE rawatobat.idobat = obat.idobat GROUP BY idobat;")->result_array();
+
+        $total = [];
+        $idobat = [];
+
+        foreach ($data as $item) {
+            array_push($total, $item['total']);
+            array_push($idobat, $item['idobat']);
+        };
+
+        $obat = ['idobat' => $idobat, 'total' => $total];
+
+        return $obat;
+    }
+
+    public function total_obat_id()
+    {
+        return $this->db->select('idobat')->from('rawatobat')->group_by("idobat")->get();
+    }
 }

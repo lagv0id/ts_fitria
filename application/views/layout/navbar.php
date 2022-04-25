@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,6 +25,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('rawatobat') ?>">RAWAT-OBAT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('dashboard/graph') ?>">GRAFIK</a>
                 </li>
             </ul>
         </div>
