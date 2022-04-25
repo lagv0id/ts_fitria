@@ -31,6 +31,7 @@
     <h4>KLINIK FITRIA</h4>
     Jl. Metro Kota No 130, Metro, Lampung <br>
     <br>
+    
     <table width=30%>
         <tr>
             <td>No Rawat</td>

@@ -70,6 +70,31 @@ class RawatObatmodel extends CI_Model
         return $obat;
     }
 
+    public function update_rawat_obat_data($a)
+    {
+        $this->db->where('idrawat', $a['idrawat']);
+        $this->db->select_sum('biaya');
+        $totalrawat = $this->db->get('rawattindakan')->row_array();
+
+        $this->db->where('idrawat', $a['idrawat']);
+        $this->db->select_sum('harga');
+        $totalobat = $this->db->get('rawatobat')->row_array();
+
+        $this->db->where('idrawat', $a['idrawat']);
+        $total = $this->db->get('rawat')->row_array();
+
+        $kekurangan = ($totalrawat['biaya'] + $totalobat['harga']) - $total['uangmuka'];
+
+        $data = [
+            'totalobat' => $totalobat['harga'],
+            'totalharga' => $total['totaltindakan'] + $totalobat['harga'],
+            'kurang' => $kekurangan
+        ];
+
+        $this->db->where('idrawat', $a['idrawat']);
+        return $this->db->update('rawat', $data);
+    }
+
     public function total_obat_id()
     {
         return $this->db->select('idobat')->from('rawatobat')->group_by("idobat")->get();

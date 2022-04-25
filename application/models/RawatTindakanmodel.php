@@ -52,4 +52,29 @@ class RawatTindakanmodel extends CI_Model
         return $this->db->update('rawattindakan', $data);
     }
 
+    public function update_rawat_tindakan_data($a)
+    {
+        $this->db->where('idrawat', $a['idrawat']);
+        $this->db->select_sum('biaya');
+        $totaltindakan = $this->db->get('rawattindakan')->row_array();
+
+        $this->db->where('idrawat', $a['idrawat']);
+        $this->db->select_sum('harga');
+        $totalobat = $this->db->get('rawatobat')->row_array();
+
+        $this->db->where('idrawat', $a['idrawat']);
+        $total = $this->db->get('rawat')->row_array();
+
+        $kekurangan = ($totaltindakan['biaya'] + $totalobat['harga']) - $total['uangmuka'];
+
+        $data = [
+            'totaltindakan' => $totaltindakan['biaya'],
+            'totalharga' => $total['totalobat'] + $totaltindakan['biaya'] ,
+            'kurang' => $kekurangan
+        ];
+
+        $this->db->where('idrawat', $a['idrawat']);
+        return $this->db->update('rawat', $data);
+    }
+
 }

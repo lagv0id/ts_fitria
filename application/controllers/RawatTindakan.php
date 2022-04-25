@@ -53,6 +53,7 @@ class RawatTindakan extends CI_Controller
             redirect(base_url('rawat'));
         } else {
             $this->RawatTindakanmodel->insert_rawat_tindakan($this->input->post());
+            $this->RawatTindakanmodel->update_rawat_tindakan_data($this->input->post());
             $this->session->set_flashdata('pesan', 'Data rawat-tindakan berhasil ditambah');
             redirect(base_url('rawattindakan'));
         }
@@ -69,6 +70,7 @@ class RawatTindakan extends CI_Controller
     public function update($id)
     {
         $this->RawatTindakanmodel->update_rawat_tindakan(($this->input->post()), $id);
+        $this->RawatTindakanmodel->update_rawat_tindakan_data($this->input->post());
         $this->session->set_flashdata('pesan', 'Data rawat-tindakan berhasil diedit.');
         redirect(base_url('rawattindakan'));
     }
