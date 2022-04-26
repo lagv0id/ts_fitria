@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="notelp" class="form-label">Telepon</label>
-                            <input type="text" name="notelp" class="form-control" id="notelp">
+                            <input type="text" name="notelp" class="form-control" id="notelp" maxlength="12">
                         </div>
                         <!-- <input type="hidden" value="<?php echo ($edit['idpasien']); ?>" name="idpasien">                              -->
                         <button type="submit" class="btn btn-primary">Submit</button>
