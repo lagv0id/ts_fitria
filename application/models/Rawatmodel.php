@@ -32,13 +32,13 @@ class Rawatmodel extends CI_Model
     {
         $this->db->where('idrawat', $a['idrawat']);
         $this->db->select_sum('biaya');
-        $totalrawat = $this->db->get('rawattindakan')->row_array();
+        $totaltindakan = $this->db->get('rawattindakan')->row_array();
 
         $this->db->where('idrawat', $a['idrawat']);
         $this->db->select_sum('harga');
         $totalobat = $this->db->get('rawatobat')->row_array();
 
-        $kekurangan = ($totalrawat['biaya'] + $totalobat['harga']) - $a['uangmuka'];
+        $kekurangan = ($totaltindakan['biaya'] + $totalobat['harga']) - $a['uangmuka'];
 
         if ($kekurangan < 0) {
             $kekurangan = '0';
@@ -47,9 +47,9 @@ class Rawatmodel extends CI_Model
         $data = [
             'idrawat' => $a['idrawat'],
             'tglrawat' => $a['tglrawat'],
-            'totaltindakan' => $totalrawat['biaya'],
+            'totaltindakan' => $totaltindakan['biaya'],
             'totalobat' => $totalobat['harga'],
-            'totalharga' => $totalrawat['biaya'] + $totalobat['harga'],
+            'totalharga' => $totaltindakan['biaya'] + $totalobat['harga'],
             'uangmuka' => $a['uangmuka'],
             'kurang' => $kekurangan,
             'idpasien' => $a['idpasien'],

@@ -46,13 +46,14 @@ class RawatObat extends CI_Controller
 
     public function insert()
     {
-        $this->form_validation->set_rules('idrawatobat', 'ID Rawat-Obat', 'is_unique[rawatobat.idrawatobat]');
+        $this->form_validation->set_rules('idrawatobat', 'ID Rawat-Obat', 'required|is_unique[rawatobat.idrawatobat]');
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('pesan', 'Data gagal ditambah, tolong cek isian form lagi.');
             redirect(base_url('rawat'));
         } else {
             $this->RawatObatmodel->insert_rawat_obat($this->input->post());
+            $this->RawatObatmodel->update_rawat_obat_data($this->input->post());
             $this->session->set_flashdata('pesan', 'Data rawat-obat berhasil ditambah');
             redirect(base_url('rawatobat'));
         }
@@ -69,6 +70,7 @@ class RawatObat extends CI_Controller
     public function update($id)
     {
         $this->RawatObatmodel->update_rawat_obat(($this->input->post()), $id);
+        $this->RawatObatmodel->update_rawat_obat_data($this->input->post());
         $this->session->set_flashdata('pesan', 'Data rawat-obat berhasil diedit.');
         redirect(base_url('rawatobat'));
     }
