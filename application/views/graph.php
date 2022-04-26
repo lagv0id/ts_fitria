@@ -54,7 +54,7 @@
     </div>
 
 
-
+    <script src="<?php echo base_url('assets/adminkit/dist/js/app.js'); ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
     <script>
         $(document).ready(function() {
