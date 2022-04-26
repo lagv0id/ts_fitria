@@ -23,6 +23,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('RawatObatmodel');
+        $this->load->model('RawatTindakanmodel');
     }
 
     public function index()
@@ -38,6 +39,27 @@ class Dashboard extends CI_Controller
     public function get_total_obat()
     {
         $data = $this->RawatObatmodel->total_obat();
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function get_total_tindakan()
+    {
+        $data = $this->RawatTindakanmodel->total_tindakan();
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function get_total_tindakan_bytgl()
+    {
+        $data = $this->RawatTindakanmodel->total_tindakan_bytgl();
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function get_total_obat_bytgl()
+    {
+        $data = $this->RawatObatmodel->total_obat_bytgl();
         header('Content-Type: application/json');
         echo json_encode($data);
     }

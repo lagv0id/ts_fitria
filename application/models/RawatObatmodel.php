@@ -74,4 +74,25 @@ class RawatObatmodel extends CI_Model
     {
         return $this->db->select('idobat')->from('rawatobat')->group_by("idobat")->get();
     }
+
+    public function total_obat_bytgl()
+    {
+
+        $data = $this->db->query("SELECT count(rawatobat.idrawatobat) as jumlahObat, rawat.tglrawat as tglrawat
+        FROM rawatobat, rawat, obat
+        WHERE rawatobat.idobat = obat.idobat AND rawatobat.idrawat = rawat.idrawat
+        GROUP BY rawat.tglrawat")->result_array();
+
+        $jumlahObat = [];
+        $tglrawat = [];
+
+        foreach ($data as $item) {
+            array_push($jumlahObat, $item['jumlahObat']);
+            array_push($tglrawat, $item['tglrawat']);
+        };
+
+        $obat = ['tglrawat' => $tglrawat,'jumlahObat' => $jumlahObat];
+
+        return $obat;
+    }
 }
