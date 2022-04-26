@@ -2,7 +2,8 @@
 <?php $this->load->view('layout/navbar'); ?>
 
 <body>
-    <div class="container">
+
+    <div class="container mt-5">
         <div class="row mb-3">
             <div class="col-md-8">
                 <div class="card">
@@ -22,48 +23,11 @@
                 </div>
             </div>
         </div>
-
-        <div class="row mb-3">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Grafik placeholder</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod at mi eu vestibulum. Vestibulum bibendum pulvinar dolor sit amet molestie. Vestibulum volutpat ante eu faucibus mollis. Phasellus quis bibendum lorem, a tincidunt nunc. Suspendisse ac urna id neque ultricies aliquet eu nec sem. Ut in molestie sem. Nullam feugiat diam eget consectetur bibendum. Pellentesque vel maximus ipsum. Aliquam luctus aliquam mi non condimentum.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Grafik placeholder</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod at mi eu vestibulum. Vestibulum bibendum pulvinar dolor sit amet molestie. Vestibulum volutpat ante eu faucibus mollis. Phasellus quis bibendum lorem, a tincidunt nunc. Suspendisse ac urna id neque ultricies aliquet eu nec sem. Ut in molestie sem. Nullam feugiat diam eget consectetur bibendum. Pellentesque vel maximus ipsum. Aliquam luctus aliquam mi non condimentum.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-
-                    </div>
-                </div>
-            </div>
-        </div>
         
     </div>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $.ajax({

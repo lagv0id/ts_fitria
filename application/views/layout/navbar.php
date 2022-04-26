@@ -1,35 +1,58 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('pasien') ?>">PASIEN</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('obat') ?>">OBAT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('tindakan') ?>">TINDAKAN</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('rawat') ?>">RAWAT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('rawattindakan') ?>">RAWAT-TINDAKAN</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('rawatobat') ?>">RAWAT-OBAT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('dashboard/graph') ?>">GRAFIK</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar js-sidebar">
+            <div class="sidebar-content js-simplebar">
+                <a class="sidebar-brand" href="index.html">
+                    <span class="align-middle">Klinik Fitria</span>
+                </a>
+
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                        Pages
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url() ?>">
+                            <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('pasien') ?>">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Pasien</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('tindakan') ?>">
+                            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Tindakan</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('obat') ?>">
+                            <i class="align-middle" data-feather="heart"></i> <span class="align-middle">Obat</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('rawat') ?>">
+                            <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Rawat</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('dashboard/graph') ?>">
+                            <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Graph</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="main">
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
+                <a class="sidebar-toggle js-sidebar-toggle">
+                    <i class="hamburger align-self-center"></i>
+                </a>
+            </nav>

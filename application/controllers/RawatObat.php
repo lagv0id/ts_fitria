@@ -55,7 +55,7 @@ class RawatObat extends CI_Controller
             $this->RawatObatmodel->insert_rawat_obat($this->input->post());
             $this->RawatObatmodel->update_rawat_obat_data($this->input->post());
             $this->session->set_flashdata('pesan', 'Data rawat-obat berhasil ditambah');
-            redirect(base_url('rawatobat'));
+            redirect(base_url('rawat'));
         }
     }
 
@@ -72,7 +72,7 @@ class RawatObat extends CI_Controller
         $this->RawatObatmodel->update_rawat_obat(($this->input->post()), $id);
         $this->RawatObatmodel->update_rawat_obat_data($this->input->post());
         $this->session->set_flashdata('pesan', 'Data rawat-obat berhasil diedit.');
-        redirect(base_url('rawatobat'));
+        redirect(base_url('rawat'));
     }
 
     public function delete($a)
@@ -80,7 +80,7 @@ class RawatObat extends CI_Controller
         $this->db->where('idrawatobat', $a);
         if ($this->db->delete('rawatobat')) {
             $this->session->set_flashdata('pesan', 'Data rawat-obat berhasil dihapus.');
-            redirect(base_url('rawatobat'));
+            redirect(base_url('rawat'));
         }
     }
 }

@@ -33,7 +33,7 @@ class RawatTindakan extends CI_Controller
 
     public function index()
     {
-        $data['list'] = $this->RawatTindakanmodel->get_rawat_tindakan();
+        $data['rtlist'] = $this->RawatTindakanmodel->get_rawat_tindakan();
         $this->load->view('rawatTindakan/rawatTindakan', $data);
     }
 
@@ -46,7 +46,7 @@ class RawatTindakan extends CI_Controller
 
     public function insert()
     {
-        $this->form_validation->set_rules('idrawattindakan', 'ID Rawat-Tindakan', 'is_unique[rawattindakan.idrawattindakan]');
+        $this->form_validation->set_rules('idrawattindakan', 'ID Rawat-Tindakan', 'required|is_unique[rawattindakan.idrawattindakan]');
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('pesan', 'Data gagal ditambah, tolong cek isian form lagi.');
@@ -55,7 +55,7 @@ class RawatTindakan extends CI_Controller
             $this->RawatTindakanmodel->insert_rawat_tindakan($this->input->post());
             $this->RawatTindakanmodel->update_rawat_tindakan_data($this->input->post());
             $this->session->set_flashdata('pesan', 'Data rawat-tindakan berhasil ditambah');
-            redirect(base_url('rawattindakan'));
+            redirect(base_url('rawat'));
         }
     }
 
@@ -72,7 +72,7 @@ class RawatTindakan extends CI_Controller
         $this->RawatTindakanmodel->update_rawat_tindakan(($this->input->post()), $id);
         $this->RawatTindakanmodel->update_rawat_tindakan_data($this->input->post());
         $this->session->set_flashdata('pesan', 'Data rawat-tindakan berhasil diedit.');
-        redirect(base_url('rawattindakan'));
+        redirect(base_url('rawat'));
     }
 
     public function delete($a)
@@ -80,7 +80,7 @@ class RawatTindakan extends CI_Controller
         $this->db->where('idrawattindakan', $a);
         if ($this->db->delete('rawattindakan')) {
             $this->session->set_flashdata('pesan', 'Data rawat-tindakan berhasil dihapus.');
-            redirect(base_url('rawattindakan'));
+            redirect(base_url('rawat'));
         }
     }
 }

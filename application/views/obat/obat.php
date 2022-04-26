@@ -1,55 +1,54 @@
 <?php $this->load->view('layout/header'); ?>
 <?php $this->load->view('layout/navbar'); ?>
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="card">
-            <div class="card-body">
+<main class="content">
+    <div class="container-fluid p-0">
 
-                <h5 class="card-title">Halaman Obat</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Data Obat Klinik Fitria</h6>
+        <h1 class="h3 mb-3"><strong>DATA</strong> Obat</h1>
 
-                <hr><a href="<?php echo base_url('obat/add') ?>" class="btn btn-primary">Tambah Obat</a>
-                <hr>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
 
-                <table class="display text-center" id="tabelobat">
+                    <h5 class="card-title">Halaman Obat</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Data Obat Klinik Fitria</h6>
 
-                    <thead>
-                        <tr>
-                            <th>ID Obat</th>
-                            <th>Nama Obat</th>
-                            <th>Harga Obat</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                    <hr><a href="<?php echo base_url('obat/add') ?>" class="btn btn-primary">Tambah Obat</a>
+                    <hr>
 
-                    <tbody>
-                        <?php foreach ($list as $item) { ?>
+                    <table class="display text-center" id="tabelobat">
+
+                        <thead>
                             <tr>
-                                <td><?php echo $item['idobat'] ?></td>
-                                <td><?php echo $item['nama'] ?></td>
-                                <td><?php echo $item['harga'] ?></td>
-                                <td>
-                                    <a href="obat/edit/<?php echo $item['idobat']; ?>" class="btn btn-warning">Edit</a>
-                                    <a href="obat/delete/<?php echo $item['idobat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
-                                </td>
+                                <th>ID Obat</th>
+                                <th>Nama Obat</th>
+                                <th>Harga Obat</th>
+                                <th>Action</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
+                        </thead>
 
-                </table>
+                        <tbody>
+                            <?php foreach ($list as $item) { ?>
+                                <tr>
+                                    <td><?php echo $item['idobat'] ?></td>
+                                    <td><?php echo $item['nama'] ?></td>
+                                    <td><?php echo $item['harga'] ?></td>
+                                    <td>
+                                        <a href="obat/edit/<?php echo $item['idobat']; ?>" class="btn btn-warning">Edit</a>
+                                        <a href="obat/delete/<?php echo $item['idobat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
+<?php $this->load->view('layout/footer'); ?>
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
@@ -62,16 +61,16 @@
     <?php if ($this->session->flashdata('pesan') != '') { ?>
         Swal.fire({
             icon: 'success',
-            title: 'SUKSES',
-            text: 'Wes iso le',
-            confirmButtonText: 'oke kul'
+            title: 'SUCCESS',
+            text: 'Whatever you did it was successful idk',
+            confirmButtonText: 'OK Cool'
         })
     <?php } elseif ($this->session->flashdata('gagal') != '') { ?>
         Swal.fire({
             icon: 'error',
-            title: 'FAIL',
-            text: 'Gagal i piye????',
-            confirmButtonText: 'selow mas'
+            title: 'ERROR',
+            text: 'Eror i piye?',
+            confirmButtonText: 'Selow mas'
         })
     <?php } ?>
 </script>

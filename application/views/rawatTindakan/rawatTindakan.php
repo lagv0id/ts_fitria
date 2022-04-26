@@ -32,7 +32,7 @@
                     </thead>
 
                     <tbody>
-                        <?php foreach ($list as $item) { ?>
+                        <?php foreach ($rtlist as $item) { ?>
                             <tr>
                                 <td><?php echo $item['idrawattindakan'] ?></td>
                                 <td><?php echo $item['idrawat'] ?></td>

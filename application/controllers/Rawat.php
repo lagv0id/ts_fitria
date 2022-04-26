@@ -35,6 +35,8 @@ class Rawat extends CI_Controller
     public function index()
     {
         $data['list'] = $this->Rawatmodel->get_rawat();
+        $data['rtlist'] = $this->RawatTindakanmodel->get_rawat_tindakan();
+        $data['rolist'] = $this->RawatObatmodel->get_rawat_obat();
         $this->load->view('rawat/rawat', $data);
     }
 

@@ -1,50 +1,135 @@
 <?php $this->load->view('layout/header'); ?>
 <?php $this->load->view('layout/navbar'); ?>
 
-<div class="container mt-4">
-    <div class="row">
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+
+                    <h5 class="card-title">Tabel Rawat</h5> 
+
+                    <hr>
+                    <a href="<?php echo base_url('rawat/add') ?>" class="btn btn-primary">Tambah Data Rawat</a>
+                    <hr>
+
+                    <table class="display text-center" id="tabelrawat">
+
+                        <thead>
+                            <tr>
+                                <th>ID Rawat</th>
+                                <th>Tanggal Rawat</th>
+                                <th>ID Pasien</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php foreach ($list as $item) { ?>
+                                <tr>
+                                    <td><?php echo $item['idrawat'] ?></td>
+                                    <td><?php echo $item['tglrawat'] ?></td>
+                                    <td><?php echo $item['idpasien'] ?></td>
+                                    <td>
+                                        <a href="<?php echo base_url() ?>rawat/print/<?php echo $item['idrawat']; ?>" class="btn btn-success">Cetak</a>
+                                        <a href="<?php echo base_url() ?>rawat/edit/<?php echo $item['idrawat']; ?>" class="btn btn-warning">Edit</a>
+                                        <a href="rawat/delete/<?php echo $item['idrawat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+
+                    <h5 class="card-title">Tabel Rawat-Tindakan</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Data Tindakan per ID Rawat</h6>
+
+                    <hr><a href="<?php echo base_url('rawatTindakan/add') ?>" class="btn btn-primary">Tambah Data Tindakan-Rawat</a>
+                    <hr>
+
+                    <table class="display text-center" id="tabelrawattindakan">
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ID Rawat</th>
+                                <th>ID Tindakan</th>
+                                <th>Nama Dokter</th>
+                                <th>Biaya</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php foreach ($rtlist as $item) { ?>
+                                <tr>
+                                    <td><?php echo $item['idrawattindakan'] ?></td>
+                                    <td><?php echo $item['idrawat'] ?></td>
+                                    <td><?php echo $item['idtindakan'] ?></td>
+                                    <td><?php echo $item['namadokter'] ?></td>
+                                    <td><?php echo $item['biaya'] ?></td>
+
+                                    <td>
+                                        <a href="rawattindakan/edit/<?php echo $item['idrawattindakan']; ?>" class="btn btn-warning">Edit</a>
+                                        <a href="rawattindakan/delete/<?php echo $item['idrawattindakan']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
+                                    </td>
+
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
         <div class="card">
             <div class="card-body">
 
-                <?php if ($this->session->flashdata('pesan') != '') { ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php echo $this->session->flashdata('pesan'); ?>
-                    </div>
-                <?php } elseif ($this->session->flashdata('gagal') != '') { ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?php echo $this->session->flashdata('gagal'); ?>
-                    </div>
-                <?php } ?>
+                <h5 class="card-title">Tabel Rawat-Obat</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Data Obat per ID Rawat</h6>
 
-                <h5 class="card-title">Halaman Rawat</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Display + Search Rawat</h6>
-
-                <hr>
-                <a href="<?php echo base_url('rawat/add') ?>" class="btn btn-primary">Tambah Data Rawat</a>
+                <hr><a href="<?php echo base_url('rawatObat/add') ?>" class="btn btn-primary">Tambah Data Tindakan-Obat</a>
                 <hr>
 
-                <table class="display text-center" id="tabelrawat">
+                <table class="display text-center" id="tabelrawatobat">
 
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>ID Rawat</th>
-                            <th>Tanggal Rawat</th>
-                            <th>ID Pasien</th>
+                            <th>ID Obat</th>
+                            <th>Jumlah</th>
+                            <th>Harga</th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <?php foreach ($list as $item) { ?>
+                        <?php foreach ($rolist as $item) { ?>
                             <tr>
+                                <td><?php echo $item['idrawatobat'] ?></td>
                                 <td><?php echo $item['idrawat'] ?></td>
-                                <td><?php echo $item['tglrawat'] ?></td>
-                                <td><?php echo $item['idpasien'] ?></td>
+                                <td><?php echo $item['idobat'] ?></td>
+                                <td><?php echo $item['jumlah'] ?></td>
+                                <td><?php echo $item['harga'] ?></td>
+
                                 <td>
-                                    <a href="<?php echo base_url() ?>rawat/print/<?php echo $item['idrawat']; ?>" class="btn btn-success">Cetak</a>
-                                    <a href="<?php echo base_url() ?>rawat/edit/<?php echo $item['idrawat']; ?>" class="btn btn-warning">Edit</a>
-                                    <a href="rawat/delete/<?php echo $item['idrawat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
+                                    <a href="rawatobat/edit/<?php echo $item['idrawatobat']; ?>" class="btn btn-warning">Edit</a>
+                                    <a href="rawatobat/delete/<?php echo $item['idrawatobat']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Delete</a>
                                 </td>
+
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -53,22 +138,44 @@
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
+    </div>
+</main>
+
+<?php $this->load->view('layout/footer'); ?>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     $(document).ready(function() {
         $('#tabelrawat').DataTable({
             responsive: true
         });
+
+        $('#tabelrawattindakan').DataTable({
+            responsive: true
+        });
+        
+        $('#tabelrawatobat').DataTable({
+            responsive: true
+        });
     });
+
+    <?php if ($this->session->flashdata('pesan') != '') { ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'SUCCESS',
+            text: 'Whatever you did it was successful idk',
+            confirmButtonText: 'OK Cool'
+        })
+    <?php } elseif ($this->session->flashdata('gagal') != '') { ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'ERROR',
+            text: 'Eror i piye?',
+            confirmButtonText: 'Selow mas'
+        })
+    <?php } ?>
 </script>
 
 </body>

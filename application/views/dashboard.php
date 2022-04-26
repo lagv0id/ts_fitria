@@ -1,17 +1,33 @@
 <?php $this->load->view('layout/header'); ?>
 <?php $this->load->view('layout/navbar'); ?>
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="card text-center">
-            <div class="card-body">
-                <div class="card-title mb-3"> <b>
-                        <h3> Selamat datang di Dashboard Klinik Fitria </h3>
-                    </b> </div>
-                <img class="img-fluid " src="assets/img/dash.jpg" alt="" width="1200px">
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <div class="row">
+            <div class="col-xl-12 d-flex">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h1 class="mt-1 mb-3">Selamat Datang di SI Klinik Fitria</h1>
+                                    <div class="mb-0">
+                                        <img src="assets/img/dashboard2.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
-</div>
+</main>
 
 <?php $this->load->view('layout/footer'); ?>
+
+</body>
+
+</html>
