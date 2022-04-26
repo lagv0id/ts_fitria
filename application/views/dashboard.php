@@ -13,7 +13,7 @@
                                 <div class="card-body text-center">
                                     <h1 class="mt-1 mb-3">Selamat Datang di SI Klinik Fitria</h1>
                                     <div class="mb-0">
-                                        <img src="assets/img/dashboard2.jpg" alt="">
+                                        <img src="assets/img/dashboard.gif" alt="">
                                     </div>
                                 </div>
                             </div>

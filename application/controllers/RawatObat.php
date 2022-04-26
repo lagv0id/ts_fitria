@@ -75,10 +75,11 @@ class RawatObat extends CI_Controller
         redirect(base_url('rawat'));
     }
 
-    public function delete($a)
+    public function delete($id)
     {
-        $this->db->where('idrawatobat', $a);
+        $this->db->where('idrawatobat', $id);
         if ($this->db->delete('rawatobat')) {
+            $this->RawatObatmodel->update_rawat_obat_data_delete($id);
             $this->session->set_flashdata('pesan', 'Data rawat-obat berhasil dihapus.');
             redirect(base_url('rawat'));
         }
