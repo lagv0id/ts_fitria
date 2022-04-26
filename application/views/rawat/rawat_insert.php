@@ -18,7 +18,7 @@
                         <label for="uangmuka">Uang muka : </label><input type="number" name="uangmuka" class="form-control" required>
                         <label for="idpasien">ID Pasien : </label><select class="form-select" name="idpasien">
                             <?php foreach ($list as $item) { ?>
-                                <option value="<?php echo $item['idpasien']; ?>"><?php echo $item['idpasien']; ?></option>
+                                <option value="<?php echo $item['idpasien']; ?>"><?php echo $item['idpasien'] . ' - ' . $item['nama']; ?></option>
                             <?php } ?>
                         </select>
                         <button class="btn btn-primary mt-4" type="submit">Tambah data rawat</button>

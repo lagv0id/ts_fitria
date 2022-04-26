@@ -19,13 +19,13 @@
 
                         <label for="idrawat">ID Rawat : </label><select class="form-select" name="idrawat">
                             <?php foreach ($rawat as $item) { ?>
-                                <option value="<?php echo $item['idrawat']; ?>"><?php echo $item['idrawat']; ?></option>
+                                <option value="<?php echo $item['idrawat']; ?>"><?php echo $item['idrawat'] . ' - ' . $item['idpasien']; ?></option>
                             <?php } ?>
                         </select>
 
                         <label for="idtindakan">ID Tindakan : </label><select class="form-select" name="idtindakan">
                             <?php foreach ($tindakan as $item) { ?>
-                                <option value="<?php echo $item['idtindakan']; ?>"><?php echo $item['idtindakan']; ?></option>
+                                <option value="<?php echo $item['idtindakan']; ?>"><?php echo $item['idtindakan'] . ' - ' . $item['namatindakan']; ?></option>
                             <?php } ?>
                         </select>
 
