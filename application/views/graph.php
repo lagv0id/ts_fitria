@@ -53,11 +53,7 @@
         </div>
     </div>
 
-</div>
 
-<?php $this->load->view('layout/footer'); ?>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
     <script>
@@ -91,7 +87,6 @@
                 },
             });
         });
-    });
 
         function chartSetup1(input) {
             const data1 = {
