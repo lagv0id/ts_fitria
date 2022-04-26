@@ -52,6 +52,44 @@ class RawatTindakanmodel extends CI_Model
         return $this->db->update('rawattindakan', $data);
     }
 
+    public function total_tindakan()
+    {
+
+        $data = $this->db->query("SELECT COUNT(rawattindakan.idrawattindakan) as total, rawattindakan.namadokter as namadokter FROM rawattindakan, rawat WHERE rawattindakan.idrawat=rawat.idrawat GROUP BY rawattindakan.namadokter;")->result_array();
+
+        $total = [];
+        $namadokter = [];
+
+        foreach ($data as $item) {
+            array_push($total, $item['total']);
+            array_push($namadokter, $item['namadokter']);
+        };
+
+        $tindakan = ['namadokter' => $namadokter, 'total' => $total];
+
+        return $tindakan;
+    }
+
+    public function total_tindakan_bytgl()
+    {
+
+        $data = $this->db->query("SELECT count(rawattindakan.idrawattindakan) as jumlahRawat, rawat.tglrawat as tglrawat
+        FROM rawattindakan, rawat, tindakan
+        WHERE rawattindakan.idtindakan = tindakan.idtindakan AND rawattindakan.idrawat = rawat.idrawat
+        GROUP BY rawat.tglrawat")->result_array();
+
+        $jumlahRawat = [];
+        $tglrawat = [];
+
+        foreach ($data as $item) {
+            array_push($jumlahRawat, $item['jumlahRawat']);
+            array_push($tglrawat, $item['tglrawat']);
+        };
+
+        $tindakan1 = ['tglrawat' => $tglrawat,'jumlahRawat' => $jumlahRawat];
+
+        return $tindakan1;
+    }
     public function update_rawat_tindakan_data($a)
     {
         $this->db->where('idrawat', $a['idrawat']);
