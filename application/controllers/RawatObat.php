@@ -77,11 +77,23 @@ class RawatObat extends CI_Controller
 
     public function delete($id)
     {
+        //Mengnolkan data rawat-obat berdasarkan id
+        $this->RawatObatmodel->turn_to_zero($id);
+        //Cari idrawat berdasarkan idrawatobat
+        $idrawat = $this->RawatObatmodel->get_idrawat_based_on_idrawatobat($id);
+        //Update data tabel rawat
+        $this->RawatObatmodel->update_rawat_obat_data_delete($idrawat['idrawat']);
+        //Baru didelete
         $this->db->where('idrawatobat', $id);
         if ($this->db->delete('rawatobat')) {
-            $this->RawatObatmodel->update_rawat_obat_data_delete($id);
             $this->session->set_flashdata('pesan', 'Data rawat-obat berhasil dihapus.');
             redirect(base_url('rawat'));
         }
+    }
+
+    public function test($id)
+    {
+        $idrawat = $this->RawatObatmodel->get_idrawat_based_on_idrawatobat($id);
+        $this->RawatObatmodel->update_rawat_obat_data_delete($idrawat['idrawat']);
     }
 }

@@ -77,6 +77,10 @@ class RawatTindakan extends CI_Controller
 
     public function delete($id)
     {
+        $this->RawatTindakanmodel->turn_to_zero($id);
+        $idrawat = $this->RawatTindakanmodel->get_idrawat_based_on_idtindakan($id);
+        $this->RawatTindakanmodel->update_rawat_tindakan_data_delete($idrawat['idrawat']);
+
         $this->db->where('idrawattindakan', $id);
         if ($this->db->delete('rawattindakan')) {
             $this->RawatTindakanmodel->update_rawat_tindakan_data_delete($id);

@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
+
 class RawatObatmodel extends CI_Model
 {
     public function get_rawat_obat()
@@ -95,11 +97,28 @@ class RawatObatmodel extends CI_Model
         return $this->db->update('rawat', $data);
     }
 
+    public function get_idrawat_based_on_idrawatobat($id)
+    {
+        $this->db->where('idrawatobat', $id);
+        return $this->db->get('rawatobat')->row_array();
+    }
+
+    public function turn_to_zero($id)
+    {
+        $data = [
+            'jumlah' => 0,
+            'harga' => 0
+        ];
+
+        $this->db->where('idrawatobat', $id);
+        return $this->db->update('rawatobat', $data);
+    }
+
     public function update_rawat_obat_data_delete($id)
     {
         $this->db->where('idrawat', $id);
         $this->db->select_sum('biaya');
-        $totalrawat = $this->db->get('rawattindakan')->row_array();
+        $totaltindakan = $this->db->get('rawattindakan')->row_array();
 
         $this->db->where('idrawat', $id);
         $this->db->select_sum('harga');
@@ -108,11 +127,16 @@ class RawatObatmodel extends CI_Model
         $this->db->where('idrawat', $id);
         $total = $this->db->get('rawat')->row_array();
 
-        $kekurangan = ($totalrawat['biaya'] + $totalobat['harga']) - $total['uangmuka'];
+        // print_r($totaltindakan['biaya']);
+        // echo '<br>';
+        // print_r($totalobat['harga']);
+        // echo '<br>';
+
+        $kekurangan = ($totaltindakan['biaya'] + $totalobat['harga']) - $total['uangmuka'];
 
         $data = [
             'totalobat' => $totalobat['harga'],
-            'totalharga' => $total['totaltindakan'] + $totalobat['harga'],
+            'totalharga' => $totaltindakan['biaya'] + $totalobat['harga'],
             'kurang' => $kekurangan
         ];
 

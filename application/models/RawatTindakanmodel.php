@@ -115,6 +115,22 @@ class RawatTindakanmodel extends CI_Model
         return $this->db->update('rawat', $data);
     }
 
+    public function get_idrawat_based_on_idtindakan($id)
+    {
+        $this->db->where('idrawattindakan', $id);
+        return $this->db->get('rawattindakan')->row_array();
+    }
+
+    public function turn_to_zero($id)
+    {
+        $data = [
+            'biaya' => 0
+        ];
+
+        $this->db->where('idrawattindakan', $id);
+        return $this->db->update('rawattindakan', $data);
+    }
+
     public function update_rawat_tindakan_data_delete($id)
     {
         $this->db->where('idrawat', $id);
@@ -128,11 +144,16 @@ class RawatTindakanmodel extends CI_Model
         $this->db->where('idrawat', $id);
         $total = $this->db->get('rawat')->row_array();
 
+        // print_r($totaltindakan['biaya']);
+        // echo '<br>';
+        // print_r($totalobat['harga']);
+        // echo '<br>';
+
         $kekurangan = ($totaltindakan['biaya'] + $totalobat['harga']) - $total['uangmuka'];
 
         $data = [
             'totaltindakan' => $totaltindakan['biaya'],
-            'totalharga' => $total['totalobat'] + $totaltindakan['biaya'] ,
+            'totalharga' => $totaltindakan['biaya'] + $totalobat['harga'],
             'kurang' => $kekurangan
         ];
 
