@@ -39,7 +39,7 @@ class Tindakan extends CI_Controller
     }
     public function edit_Tindakan($a)
     {
-        // mengambil data dari tabel penerbit melalui method get_daftar_penerbit dari Model PenerbitModel
+        // mengambil data dari tabel penerbit melalui method get_daftar_tindakan dari Model tindakanmodel
         $data['detail'] = $this->Tindakanmodel->get_daftar_tindakan($a);
         $this->load->view('dashboard');
         $this->load->view('tindakan/editTindakan', $data);
